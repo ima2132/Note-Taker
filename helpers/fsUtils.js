@@ -1,41 +1,49 @@
 const fs = require('fs');
 const util = require('util');
 
-// reads db.json file and returns all saved notes 
-const readFromFile = util.promisify(fs.readFile);
+// promisify the fs.readFile and fs.writeFile functions
+const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 
-// lets you write new notes to the db.json file 
-const writeToFile = (destination, content) =>
-  fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
-    err ? console.error(err) : console.info(`\nData written to ${destination}`)
-  );
-
-// reads json file, appends new content, and then writes the updated data back to the file
-const readAndAppend = (content, file) => {
-  fs.readFile(file, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      const parsedData = JSON.parse(data);
-      parsedData.push(content);
-      writeToFile(file, parsedData);
-    }
-  });
+// function to read from a file and return the parsed JSON data
+const readFromFile = (file) => {
+  return readFileAsync(file, 'utf8').then((data) => JSON.parse(data));
 };
 
-// reads json file, filters out the note to delete, and then writes the updated data back to the file
-const readAndDelete = (id, file) => {
-    fs.readFile(file, 'utf8', (err, data) => {
-      if (err) {
-        console.error(err);
-      } else {
-        let parsedData = JSON.parse(data);
-        parsedData = parsedData.filter((note) => note.id !== id);
-        writeToFile(file, parsedData);
-      }
+// function to write content to a file
+const writeToFile = (file, content) => {
+  const data = JSON.stringify(content, null, 4);
+  return writeFileAsync(file, data);
+};
+
+// function to append new content to a file
+const readAndAppend = (content, file) => {
+  return readFromFile(file)
+    .then((data) => {
+      const parsedData = JSON.parse(data);
+      parsedData.push(content);
+      return writeToFile(file, parsedData);
+    })
+    .catch((err) => {
+      console.error(err);
+      throw err;
     });
-  };
-  
+};
+
+// function to read from a file, filter out the note to delete, and write the updated data back to the file
+const readAndDelete = (id, file) => {
+  return readFromFile(file)
+    .then((data) => {
+      let parsedData = JSON.parse(data);
+      parsedData = parsedData.filter((note) => note.id !== id);
+      return writeToFile(file, parsedData);
+    })
+    .catch((err) => {
+      console.error(err);
+      throw err;
+    });
+};
 
 module.exports = { readFromFile, writeToFile, readAndAppend, readAndDelete };
+
 

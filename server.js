@@ -4,7 +4,7 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1000;
 
 const { readFromFile, writeToFile, readAndAppend, readAndDelete } = require('./helpers/fsUtils');
 
@@ -16,8 +16,11 @@ app.use(express.static('public'));
 // route to get all notes
 app.get('/api/notes', (req, res) => {
   readFromFile('./db/db.json')
-    .then((data) => res.json(JSON.parse(data)))
-    .catch((err) => console.error(err));
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 // route to add a note
@@ -27,8 +30,12 @@ app.post('/api/notes', (req, res) => {
 
   readAndAppend(newNote, './db/db.json')
     .then(() => res.status(200).json(newNote))
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
+
 
 // route to delete a note
 app.delete('/api/notes/:id', (req, res) => {
@@ -36,7 +43,10 @@ app.delete('/api/notes/:id', (req, res) => {
 
   readAndDelete(noteId, './db/db.json')
     .then(() => res.status(200).json({ message: 'Note deleted successfully' }))
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 // route to notes.html
@@ -51,4 +61,6 @@ app.get('/', (req, res) => {
 
 // starts the server
 app.listen(PORT, () => console.log(`Server is listening on PORT: ${PORT}`));
+
+
 
