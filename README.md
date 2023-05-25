@@ -25,7 +25,7 @@ To use Note Taker, follow these steps:
 3. Start the application by running the command `node server.js`.
 4. Once the server is running, you can access Note Taker by visiting `http://localhost:5000/` in your web browser. 
 
-* Alternatively, you can use the deployed website by clicking on this link:
+* Alternatively, you can use the deployed website by clicking on this link: https://fierce-harbor-88066.herokuapp.com/
 
 
 
@@ -49,3 +49,4 @@ To delete a note, click on the trash can icon:
 ## License
 Please refer to the LICENSE listed in the repo. 
 ## Deployed URL 
+https://fierce-harbor-88066.herokuapp.com/
