@@ -1,6 +1,22 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Example Note",
+        "text": "This is an example note.",
+        "id": "12345678"
+    },
+    {
+        "title": "Birthday",
+        "text": "Today is my birthday!",
+        "id": "0526"
+    },
+    {
+        "title": "Haircut",
+        "text": "Make sure to get a haircut in Chinatown on Thursday.",
+        "id": "ilovedumplings123"
+    },
+    {
+        "title": "Brunch in Brooklyn",
+        "text": "Mediterranean brunch reservation on Sunday",
+        "id": "brooklynbound"
     }
 ]
