@@ -27,16 +27,26 @@ To use Note Taker, follow these steps:
 
 The following images show the web application's appearance and functionality:
 
+
 To begin using this application, simply click the "Get Started" button. This will redirect you to the note-taking page. From there, you can create and manage your list of notes:
+
+
+<img width="1440" alt="Screen Shot 2023-05-24 at 10 55 52 PM" src="https://github.com/ima2132/Note-Taker/assets/117132129/85673b5f-51da-4076-af25-dd8e43028243">
+
+<img width="1440" alt="Screen Shot 2023-05-24 at 10 53 33 PM" src="https://github.com/ima2132/Note-Taker/assets/117132129/43947c81-c4cd-426b-9a62-03c41d20de04">
 
 After being redirected to the notes page, you can easily add new notes by entering the title and contents in the provided input fields:
 
-To save the note, simply click the icon located next to the + symbol:
+<img width="1440" alt="Screen Shot 2023-05-24 at 10 56 39 PM" src="https://github.com/ima2132/Note-Taker/assets/117132129/6f84a59a-0a52-4a79-84a9-66f79827ee2c">
 
-The note you just created will be listed among the previous notes for you to view:
+
+To save the note, simply click the icon located next to the + symbol. The note you just created will be listed among the previous notes for you to view:
+
+<img width="1440" alt="Screen Shot 2023-05-24 at 10 57 15 PM" src="https://github.com/ima2132/Note-Taker/assets/117132129/2757ca5e-6b35-44df-88e0-33537b611941">
 
 To delete a note, click on the trash can icon:
 
+<img width="1440" alt="Screen Shot 2023-05-24 at 10 57 32 PM" src="https://github.com/ima2132/Note-Taker/assets/117132129/fd1dfbba-f66c-45e5-a885-448cce4f4337">
 
 ## License
 Please refer to the LICENSE listed in the repo. 
