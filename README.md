@@ -9,6 +9,8 @@
 
 ## Description 
 The main objective of this project is to create an application called Note Taker that can be used to write and save notes. This application uses `Express.js` for the back-end and will save and retrieve note data from a `JSON` file. 
+
+Note Taker is a useful tool for organizing your thoughts and managing your to-do lists.
 ## Installation
 To install the program, you will need to have `VS Code` and `Node.js` installed. First, clone my repo. You will then need to install dependencies in order to use Note Taker.
 
