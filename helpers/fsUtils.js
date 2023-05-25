@@ -20,9 +20,8 @@ const writeToFile = (file, content) => {
 const readAndAppend = (content, file) => {
   return readFromFile(file)
     .then((data) => {
-      const parsedData = JSON.parse(data);
-      parsedData.push(content);
-      return writeToFile(file, parsedData);
+      data.push(content);
+      return writeToFile(file, data);
     })
     .catch((err) => {
       console.error(err);
@@ -34,8 +33,7 @@ const readAndAppend = (content, file) => {
 const readAndDelete = (id, file) => {
   return readFromFile(file)
     .then((data) => {
-      let parsedData = JSON.parse(data);
-      parsedData = parsedData.filter((note) => note.id !== id);
+      let parsedData = data.filter((note) => note.id !== id);
       return writeToFile(file, parsedData);
     })
     .catch((err) => {
@@ -45,5 +43,7 @@ const readAndDelete = (id, file) => {
 };
 
 module.exports = { readFromFile, writeToFile, readAndAppend, readAndDelete };
+
+
 
 
